@@ -4,6 +4,9 @@ Hakemisto:
 
 ```
 osa0
+  0.4: uusi muistiinpano
+  0.5: single page app
+  0.6: uusi muistiinpano
 osa1
 osa2
 osa3
