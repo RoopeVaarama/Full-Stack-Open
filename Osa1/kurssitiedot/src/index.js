@@ -20,7 +20,7 @@ const Content = (props) => {
 }
 
 function Part(props){
-  return <p>{props.part}: {props.exercise}</p>;
+  return <p>{props.part} {props.exercise}</p>;
 }
 
 const Total = (props) => {
