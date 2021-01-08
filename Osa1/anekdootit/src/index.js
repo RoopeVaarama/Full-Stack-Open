@@ -31,16 +31,30 @@ const Vote = ({copy, selected}) => {
   )
 
 }
-function highest(array){
-  return Math.max.apply(null, array);
+function indexOfMax(arr){
+  console.log(arr);
+  var max = arr[0];
+  var maxIndex = 0;
+
+  for(var i = 1; i < arr.length; i++){
+    if(arr[i] > max){
+      maxIndex = i;
+      max = arr[i]
+    }
+  }
+  console.log(maxIndex);
+  return maxIndex;
+
 }
 const TopVoted = ({copy}) => {
-  var high = highest(copy);
-  if(high){
+  var high = indexOfMax(copy);
+  console.log(high)
+  if(high => 0){
   return(
     <div>
       <h1>Anecdote with most votes</h1>
       <p>{anecdotes[high]}</p>
+      <p>has {copy[high]} votes</p>
     </div>
   )
   }
