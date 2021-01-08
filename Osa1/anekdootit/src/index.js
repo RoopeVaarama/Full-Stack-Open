@@ -1,25 +1,6 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-const App = (props) => {
-  const [selected, setSelected] = useState(0)
-  let randomNumber = Math.floor((Math.random() * 5) + 0)
-  console.log(randomNumber)
-  const points = { 0: 0, 1: 0, 2: 0, 3:0, 4:0, 5:0}
-  const copy = { ...points}
-  console.log({copy})
-  copy[selected] += 1
-
-  return (
-    <div>
-      <p>{anecdotes[selected]}</p>
-      <p>has {copy[0]} votes</p>
-      <button onClick={() => (copy[0] += 1)}>Vote</button>
-      <button onClick={() => setSelected(selected === randomNumber)}>Next one</button>
-    </div>
-  )
-}
-
 const anecdotes = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -28,6 +9,67 @@ const anecdotes = [
   'Premature optimization is the root of all evil.',
   'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
 ]
+const points = [0, 0, 0, 0, 0, 0];
+const copy = [...points];
+
+
+const Anecdote = ({selected}) => {
+  return(
+  <div>
+  <p>{anecdotes[selected]}</p>
+  </div>
+  )
+
+}
+
+const Vote = ({copy, selected}) => {
+  console.log(copy);
+  return(
+    <div>
+      <p>has {copy[selected]} votes</p>
+    </div>
+  )
+
+}
+function highest(array){
+  return Math.max.apply(null, array);
+}
+const TopVoted = ({copy}) => {
+  var high = highest(copy);
+  if(high){
+  return(
+    <div>
+      <h1>Anecdote with most votes</h1>
+      <p>{anecdotes[high]}</p>
+    </div>
+  )
+  }
+  if(!high){
+   console.log(high)
+   return(
+     <div>
+       <p></p>
+     </div>
+   ) 
+  }
+}
+const App = (props) => {
+  const [selected, setSelected] = useState(0)
+  let randomNumber = [Math.floor(Math.random()*anecdotes.length)];
+  console.log(randomNumber);
+  return (
+    <div>
+      <h1>Anecdote of the day</h1>
+      <Anecdote selected={selected}/>
+      <Vote copy={copy} selected={selected}/>
+      <button onClick={() => copy[selected] += 1}>Vote</button>
+      <button onClick={() => setSelected(randomNumber)}>Next anecdote</button>
+      <TopVoted copy={copy}/>
+    </div>
+  )
+}
+
+
 
 ReactDOM.render(
   <App />,
