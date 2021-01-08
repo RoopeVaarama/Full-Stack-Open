@@ -8,6 +8,9 @@ osa0
   0.5: single page app
   0.6: uusi muistiinpano
 osa1
+  1.1-1.5: kurssitiedot
+  1.6-1.11: unicafe
+  1.12-1.14: anekdootit
 osa2
 osa3
 osa4
