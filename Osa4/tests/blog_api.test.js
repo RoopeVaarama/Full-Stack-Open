@@ -186,6 +186,23 @@ describe('viewing a specific blog', () => {
     });
 });
 
+describe('addition of a new blog fails without token', () => {
+    test('a valid blog without token fails ', async () => {
+        const newBlog = {
+            title: 'testi',
+            author: 'testaaja',
+            url: 'testi.fi',
+            likes: 1,
+        };
+
+        await api
+            .post('/api/blogs')
+            .send(newBlog)
+            .expect(401)
+            .expect('Content-Type', /application\/json/);
+    });
+});
+
 afterAll(async () => {
     await mongoose.connection.close();
 });
