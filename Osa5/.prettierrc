@@ -1,0 +1,14 @@
+{
+    "printWidth": 80,
+    "tabWidth": 2,
+    "indentSize": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "linebreakStyle": "unix",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": true,
+    "arrowParens": "always",
+    "proseWrap": "preserve"
+  }

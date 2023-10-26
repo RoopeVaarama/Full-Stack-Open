@@ -8,6 +8,7 @@ blogRouter.get('/', async (request, response) => {
         username: 1,
         name: 1,
     });
+    console.log('blogs:', blogs);
     response.json(blogs);
 });
 
@@ -24,7 +25,7 @@ blogRouter.post('/', async (request, response) => {
     } else {
         const userInfo = await User.findById(user);
         console.log('user:', userInfo, userInfo._id);
-        const blog = new Blog({ ...body, userInfo: userInfo._id });
+        const blog = new Blog({ ...body, user: userInfo._id });
         console.log('testis:', request.method);
 
         const savedBlog = await blog.save();
